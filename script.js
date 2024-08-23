@@ -52,7 +52,7 @@ function convertColors() {
 		row.appendChild(cell2);
 
 		const cell3 = document.createElement("td");
-		cell3.textContent = rgba[i].to("oklch").toString({precision: 3});
+		cell3.textContent = rgba[i].to("oklch").toString();
 		row.appendChild(cell3);
 
 		const cell = document.createElement("td");
@@ -63,17 +63,17 @@ function convertColors() {
 
 		// hue
 		const cell4 = document.createElement("td");
-		cell4.textContent = rgba[i].lch.h;
+		cell4.textContent = rgba[i].oklch.h;
 		row.appendChild(cell4);
 
 		// lightness
 		const cell5 = document.createElement("td");
-		cell5.textContent = rgba[i].lch.l;
+		cell5.textContent = rgba[i].oklch.l;
 		row.appendChild(cell5);
 
 		// chroma
 		const cell6 = document.createElement("td");
-		cell6.textContent = rgba[i].lch.c;
+		cell6.textContent = rgba[i].oklch.c;
 		row.appendChild(cell6);
 
 		// alpha
