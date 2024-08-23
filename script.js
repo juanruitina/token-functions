@@ -32,13 +32,15 @@ function convertColors() {
 	}
 
 	// header
-	const header = document.createElement("tr");
+	const header = document.createElement("thead");
+	const header_row = document.createElement("tr");
 	const header_cells = ["rgba", "oklch", "", "hue", "lightness", "chroma", "alpha"];
 	for (let i = 0; i < header_cells.length; i++) {
 		const cell = document.createElement("th");
 		cell.textContent = header_cells[i];
-		header.appendChild(cell);
+		header_row.appendChild(cell);
 	}
+	header.appendChild(header_row);
 	table.appendChild(header);
 
 	for (let i = 0; i < rgba.length; i++) {
@@ -50,7 +52,7 @@ function convertColors() {
 		row.appendChild(cell2);
 
 		const cell3 = document.createElement("td");
-		cell3.textContent = rgba[i].to("oklch").toString({precision: 2});
+		cell3.textContent = rgba[i].to("oklch").toString({precision: 3});
 		row.appendChild(cell3);
 
 		const cell = document.createElement("td");
@@ -88,3 +90,8 @@ document.querySelector("textarea.original").addEventListener("input", function()
 	convertColors();
 });
 
+// change background based on radio buttons inside .background-switch. colours are light, paper and dark
+document.querySelector(".background-switch").addEventListener("change", function() {
+	const value = document.querySelector(".background-switch input:checked").value;
+	document.body.className = "is-" + value;
+});
